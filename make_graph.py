@@ -72,11 +72,17 @@ if __name__ == "__main__":
             code.append('{mom.name}->{child.name};\n'.format(mom=n.mom,child=n))
         if n.father:
             code.append('{father.name}->{child.name};\n'.format(father=n.father,child=n))
+    for i in range(rank):
+        code.append('r{rank}[shape = "plaintext",label = "step{rank}"];\n'.format(rank=i))
+    code.append('r0->n0[style = "invis", rank = "same"];\n')
+    for i in range(1,rank):
+        code.append('r{r1}->r{r2}[style = "invis"];\n'.format(r1=i,r2 = i-1))
     code.append('}\n')
+
     dot_flie.writelines(code)
     dot_flie.close()
     G = pgv.AGraph("test.dot")
-    G.layout('dot') 
+    G.layout('dot')
     G.draw('file.png')
 
 

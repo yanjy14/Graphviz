@@ -2,7 +2,10 @@
 Graphviz for Bio-CAD
 ##安装
 
+```
 	sudo apt-get install graphviz
+```
+
 ##使用
 
 	dot -T<type> -o<outfile> <infile.dot>
@@ -18,3 +21,12 @@ Graphviz for Bio-CAD
 	-Tdia (GTK+ based diagrams),
 	-Timap (imagemap files for httpd servers for each node or edge  that  has a non-null "href" 	attribute.),
 	-Tcmapx (client-side imagemap for use in html and xhtml).
+##dot语言简介
+1.digraph是有向图，graph是无向图，要注意，->用在有向图中，--用在无向图中表示一条边，不能混用。
+
+```
+digraph G {
+	main -> parse -> execute;
+}
+```
+2.常用属性
